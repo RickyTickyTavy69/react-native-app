@@ -14,8 +14,21 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos."
+        }
+      ]
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "You must allow to access your camera, if you want to upload your pictures to AI",
+        "NSPhotoLibraryUsageDescription": "You must allow access to your photo library to save pictures to your device"
+      }
     },
     "android": {
       "adaptiveIcon": {

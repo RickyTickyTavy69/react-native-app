@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Navigation from "./navigation/Navigation";
+import {withExpoSnack} from "nativewind"
+import Footer from "./components/Footer/Footer";
+import React from "react";
+import Gallery from "./components/Gallery/Gallery";
 
-export default function App() {
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <>
+        <Navigation/>
+      </>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default withExpoSnack(App);
