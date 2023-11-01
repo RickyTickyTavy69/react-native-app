@@ -50,8 +50,8 @@ const ImageCreator = () => {
             console.log("axios error", e);
         }
 
-        setPrompt("");
-        setName("");
+        // setPrompt("");
+        // setName("");
     }
 
     const handleChangePrompt = (text : string) => {

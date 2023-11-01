@@ -22,12 +22,15 @@ const OnboardingScreen = () => {
 
     const navigation = useNavigation();
     const handleDone = () => {
-        navigation.navigate('Home');
+        navigation.navigate("app");
     };
     // not sure if those containerStyles are working
   return (
     <View style={styles.container}>
       <Onboarding
+         showNext={false}
+         showSkip={false}
+         showDone={false}
         onDone={handleDone}
         onSkip={handleDone}
         containerStyles={{ paddingHorizontal: 15 }}
@@ -45,10 +48,10 @@ const OnboardingScreen = () => {
             subtitle: "Here you can generate your art and do more other things",
           },
           {
-            backgroundColor: "#271c1f",
+            backgroundColor: "#fff",
             image: <OnBoardingThree />,
-            title: "PlayGroundAi",
-            subtitle: "Swipe left again to begin",
+            title: "",
+            subtitle: "",
           },
         ]}
       />
