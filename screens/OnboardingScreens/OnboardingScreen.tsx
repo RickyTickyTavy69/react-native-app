@@ -13,6 +13,7 @@ import OnBoardingTwo from "./OnBoardingTwo";
 import OnBoardingThree from "./OnBoardingThree";
 import robo from "../../assets/icons/roboIcon.png";
 import { useNavigation } from "@react-navigation/native";
+import PublicOnlyRouteWrapper from "../../RoutesWrapper/PublicOnlyRouteWrapper";
 
 const { width, height } = Dimensions.get("window");
 // this gets you the width and height of the window.
@@ -26,36 +27,38 @@ const OnboardingScreen = () => {
     };
     // not sure if those containerStyles are working
   return (
-    <View style={styles.container}>
-      <Onboarding
-         showNext={false}
-         showSkip={false}
-         showDone={false}
-        onDone={handleDone}
-        onSkip={handleDone}
-        containerStyles={{ paddingHorizontal: 15 }}
-        pages={[
-          {
-            backgroundColor: "#ABD7FA",
-            image: <OnBoardingOne />,
-            title: "PlayGroundAi",
-            subtitle: "Welcome to AI playground",
-          },
-          {
-            backgroundColor: "#FFD8AF",
-            image: <OnBoardingTwo />,
-            title: "PlayGroundAi",
-            subtitle: "Here you can generate your art and do more other things",
-          },
-          {
-            backgroundColor: "#fff",
-            image: <OnBoardingThree />,
-            title: "",
-            subtitle: "",
-          },
-        ]}
-      />
-    </View>
+      <PublicOnlyRouteWrapper>
+        <View style={styles.container}>
+          <Onboarding
+             showNext={false}
+             showSkip={false}
+             showDone={false}
+            onDone={handleDone}
+            onSkip={handleDone}
+            containerStyles={{ paddingHorizontal: 15 }}
+            pages={[
+              {
+                backgroundColor: "#ABD7FA",
+                image: <OnBoardingOne />,
+                title: "PlayGroundAi",
+                subtitle: "Welcome to AI playground",
+              },
+              {
+                backgroundColor: "#FFD8AF",
+                image: <OnBoardingTwo />,
+                title: "PlayGroundAi",
+                subtitle: "Here you can generate your art and do more other things",
+              },
+              {
+                backgroundColor: "#fff",
+                image: <OnBoardingThree />,
+                title: "",
+                subtitle: "",
+              },
+            ]}
+          />
+        </View>
+      </PublicOnlyRouteWrapper>
   );
 };
 

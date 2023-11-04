@@ -1,5 +1,5 @@
 import { StyledImage, StyledSafeView, StyledView } from "../common";
-import React, { useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {
     FlatList,
     StyleSheet,
@@ -7,11 +7,13 @@ import {
 } from "react-native";
 import useGalleryData from "../../hooks/useGalleryData";
 
-const Gallery = () => {
+const Gallery = ({givenIndex}: { givenIndex?: any }) => {
   const { width, height } = Dimensions.get("window");
   const {data : galleryAssets} = useGalleryData();
   const topRef = useRef();
   const thumbRef = useRef();
+
+
 
   const [activeIndex, setActiveIndex] = useState();
   const scrollToActive = (index: any) => {
@@ -38,6 +40,12 @@ const Gallery = () => {
       }
   }
 
+    useEffect(() => {
+        if(givenIndex){
+            scrollToActive(givenIndex)
+        }
+    }, [givenIndex]);
+
   return (
     <StyledSafeView style={{ flex: 1, backgroundColor: "#000" }}>
       <FlatList
@@ -52,11 +60,13 @@ const Gallery = () => {
         keyExtractor={(item) => item.asset_id}
         renderItem={({ item }) => {
           return (
-            <StyledView style={{ width, height, position: "relative"}}>
+            <StyledView style={{ position: "relative" }}>
                 <StyledView style={styles.line}/>
                 <StyledImage
+                    className={"mt-20"}
                     source={{ uri: item.url }}
-                    style={[StyleSheet.absoluteFillObject]}
+                    width={width}
+                    height={500}
                 />
             </StyledView>
           );
@@ -69,7 +79,7 @@ const Gallery = () => {
             data={galleryAssets}
             keyExtractor={(item) => item.asset_id}
             contentContainerStyle={{paddingHorizontal: 10}}
-            style={{position: 'absolute', bottom: 80}}
+            style={{position: 'absolute', bottom: 130}}
             renderItem={({ item, index }) => {
 
                 return (

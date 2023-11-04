@@ -16,7 +16,7 @@ const OnBoardingThree = () => {
     const navigation = useNavigation();
 
     const handleStart = () => {
-        navigation.navigate("app");
+        navigation.navigate("Home");
     }
     const handleSignUp = () => {
         console.log("signup");

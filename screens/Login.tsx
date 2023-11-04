@@ -30,7 +30,7 @@ const LogIn = () => {
                 await AsyncStorage.setItem("userId", response.data.user.userId);
                 await AsyncStorage.setItem("AccessToken", response.data.accessToken);
                 setLoading(false);
-                navigation.navigate("app");
+                navigation.navigate("Home");
             } else{
                 console.log("login error");
                 alert("login error");

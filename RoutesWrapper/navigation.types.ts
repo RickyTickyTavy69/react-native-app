@@ -1,0 +1,1 @@
+export type NavPath = "Login" | "Profile" | "Home" | "ImageCreator";

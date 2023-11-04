@@ -20,9 +20,19 @@ export const VerifyEmail = async (verifyData: VerifyMailData) => {
 }
 
 export const SignUp = async (logInData: LogInUser) => {
-    const response = await axios.post("http://192.168.2.116:5000/auth/login", logInData, {
+        const response = await axios.post("http://192.168.2.116:5000/auth/login", logInData, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        return response;
+}
+
+export const GetUser = async (AccessToken: string) => {
+    const response = await axios.get("http://192.168.2.116:5000/auth/getUser", {
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${AccessToken}`,
         },
     });
     return response;
